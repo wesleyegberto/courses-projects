@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,6 +26,8 @@ public class ToDo {
     private String description;
     private int priority;
     private boolean done;
+    @Version
+    private int version;
 
     // JPA
     private static final String PREFIX = "reminders.entity.ToDo";
@@ -84,6 +87,14 @@ public class ToDo {
     
     public boolean getStatus() {
         return this.done;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
     
 }

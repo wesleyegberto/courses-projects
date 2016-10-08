@@ -78,6 +78,20 @@ public class ToDosResourceIT {
         assertThat(updatedTodo.getString("caption"), is(NEW_CAPTION));
         
         
+        // Test the Update of invalid state
+        todoToUpdate = Json.createObjectBuilder()
+                            .add("caption", NEW_CAPTION)
+                            .add("description", "...")
+                            .add("priority", 20)
+                            .build();
+        response = this.client.target(location)
+                    .request(MediaType.APPLICATION_JSON)
+                    .put(Entity.json(todoToUpdate));
+        assertThat(response.getStatus(), is(409));
+        String conflict = response.getHeaderString("conflict");
+        assertNotNull(conflict);
+        System.err.println(conflict);
+        
         // Test the Update Status
         JsonObject updatedStatus = Json.createObjectBuilder().add("done", true).build();
         response = this.client.target(location)
