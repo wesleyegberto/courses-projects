@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.json.JsonValue;
+import javax.validation.Valid;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -39,7 +40,7 @@ public class ToDosResource {
     }
     
     @POST
-    public Response save(ToDo todo, @Context UriInfo info) {
+    public Response save(@Valid ToDo todo, @Context UriInfo info) {
         ToDo savedTodo = manager.save(todo);
         // Builds the URL to get the created ToDo
         long id = savedTodo.getId();
@@ -52,7 +53,7 @@ public class ToDosResource {
     
     @PUT
     @Path("{id}")
-    public ToDo update(@PathParam("id") long id, ToDo todo) {
+    public ToDo update(@PathParam("id") long id, @Valid ToDo todo) {
         todo.setId(id);
         return manager.save(todo);
     }

@@ -1,10 +1,23 @@
 package com.github.wesleyegberto.doitapp.business.reminders.entity;
 
+import com.github.wesleyegberto.doitapp.business.CrossCheck;
+import com.github.wesleyegberto.doitapp.business.ValidEntity;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.TextMessage;
+import javax.mail.Session;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Version;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,13 +30,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @NamedQuery(name = ToDo.FETCH_ALL, query = "SELECT t FROM ToDo t")
-public class ToDo {
+@CrossCheck
+public class ToDo implements ValidEntity {
     
     @Id
     @GeneratedValue
     private long id;
+    @NotNull @Size(min = 5, max = 100)
     private String caption;
     private String description;
+    @Min(0) @Max(100)
     private int priority;
     private boolean done;
     @Version
@@ -96,5 +112,22 @@ public class ToDo {
     public void setVersion(int version) {
         this.version = version;
     }
-    
+
+    private Session getS() throws NamingException {
+        Context c = new InitialContext();
+        return (Session) c.lookup("java:comp/env/s");
+    }
+
+    private Message createJMSMessageFord(javax.jms.Session session, Object messageData) throws JMSException {
+        // TODO create and populate message to send
+        TextMessage tm = session.createTextMessage();
+        tm.setText(messageData.toString());
+        return tm;
+    }
+
+    @Override
+    public boolean isValid() {
+        return (priority > 10 && description != null || priority <= 10);
+    }
+
 }

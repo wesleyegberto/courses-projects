@@ -155,4 +155,37 @@ public class ToDosResourceIT {
         assertThat(response.getStatus(), is(204));
     }
     
+    @Test
+    public void should_got_error_for_invalid_todo() {
+        JsonObject todo = Json.createObjectBuilder()
+                                    .add("description", "...")
+                                    .add("priority", 10)
+                                    .build();
+        
+        Response response = this.tut.request().post(Entity.json(todo));
+        assertThat(response.getStatus(), is(400));
+    }
+    
+    @Test
+    public void should_create_valid_todo() {
+        JsonObject todo = Json.createObjectBuilder()
+                                .add("caption", "Valid caption value")
+                                .add("description", "Any description here")
+                                .add("priority", 10)
+                                .build();
+        
+        Response response = this.tut.request().post(Entity.json(todo));
+        assertThat(response.getStatus(), is(201));
+    }
+    
+    @Test
+    public void should_not_create_high_priority_todo_without_description() {
+        JsonObject todo = Json.createObjectBuilder()
+                                .add("caption", "High priority without description")
+                                .add("priority", 20)
+                                .build();
+        
+        Response response = this.tut.request().post(Entity.json(todo));
+        assertThat(response.getStatus(), is(400));
+    }
 }
