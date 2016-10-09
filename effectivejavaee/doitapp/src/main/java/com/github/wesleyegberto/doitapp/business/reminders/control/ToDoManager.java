@@ -1,8 +1,10 @@
 package com.github.wesleyegberto.doitapp.business.reminders.control;
 
+import com.github.wesleyegberto.doitapp.business.logging.boundary.ControlLogger;
 import com.github.wesleyegberto.doitapp.business.reminders.entity.ToDo;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
@@ -12,6 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author wesley
  */
 @Stateless
+@Interceptors(ControlLogger.class)
 public class ToDoManager {
     
     @PersistenceContext
