@@ -7,7 +7,9 @@ package com.github.wesleyegberto.doitapp.business.monitoring.boundary;
 
 import com.github.wesleyegberto.doitapp.business.logging.boundary.LogSink;
 import com.github.wesleyegberto.doitapp.business.monitoring.entity.CallEvent;
+import java.util.LongSummaryStatistics;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
@@ -36,6 +38,11 @@ public class CallMonitorSink {
     
     public CopyOnWriteArrayList<CallEvent> getRecentsEvents() {
         return recentsEvents;
+    }
+    
+    public LongSummaryStatistics getStatistics() {
+        return recentsEvents.stream()
+                .collect(Collectors.summarizingLong(CallEvent::getDuration));
     }
     
     public void onCallEvent(@Observes CallEvent event) {
