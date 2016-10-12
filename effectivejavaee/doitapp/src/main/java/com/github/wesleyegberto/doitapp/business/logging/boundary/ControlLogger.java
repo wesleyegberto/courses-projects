@@ -1,5 +1,7 @@
 package com.github.wesleyegberto.doitapp.business.logging.boundary;
 
+import com.github.wesleyegberto.doitapp.business.monitoring.entity.CallEvent;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.InvocationContext;
@@ -11,12 +13,17 @@ import javax.interceptor.InvocationContext;
 public class ControlLogger {
 
     @Inject
-    LogSink logger;
+    Event<CallEvent> observers;
     
     @AroundInvoke
     public Object logCall(InvocationContext ic) throws Exception {
-        logger.log("-- Called: " + ic.getMethod().getName());
-        return ic.proceed();
+        long start = System.currentTimeMillis();
+        try {
+            return ic.proceed();
+        } finally {
+            long end = System.currentTimeMillis();
+            observers.fire(new CallEvent(ic.getMethod().getName(), (end - start)));
+        }
     }
     
 }
