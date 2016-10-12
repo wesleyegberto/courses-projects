@@ -1,9 +1,15 @@
 package com.github.wesleyegberto.doitapp.business.monitoring.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
  * @author wesley
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement
 public class CallEvent {
 
     private String methodName;
