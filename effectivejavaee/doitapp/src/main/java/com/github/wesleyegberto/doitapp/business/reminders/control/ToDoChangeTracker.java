@@ -1,5 +1,6 @@
 package com.github.wesleyegberto.doitapp.business.reminders.control;
 
+import com.github.wesleyegberto.doitapp.business.encoders.JsonEncoder;
 import com.github.wesleyegberto.doitapp.business.reminders.entity.ToDo;
 import java.io.IOException;
 import javax.ejb.ConcurrencyManagement;

@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.doitapp.business;
+package com.github.wesleyegberto.doitapp.business.validations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

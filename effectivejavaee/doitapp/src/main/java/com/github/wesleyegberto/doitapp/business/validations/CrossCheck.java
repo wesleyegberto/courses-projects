@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.doitapp.business;
+package com.github.wesleyegberto.doitapp.business.validations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,4 +1,4 @@
-package com.github.wesleyegberto.doitapp.business.reminders.control;
+package com.github.wesleyegberto.doitapp.business.encoders;
 
 import java.io.Writer;
 import javax.json.Json;

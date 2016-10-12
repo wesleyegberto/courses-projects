@@ -1,7 +1,7 @@
 package com.github.wesleyegberto.doitapp.business.reminders.entity;
 
-import com.github.wesleyegberto.doitapp.business.CrossCheck;
-import com.github.wesleyegberto.doitapp.business.ValidEntity;
+import com.github.wesleyegberto.doitapp.business.validations.CrossCheck;
+import com.github.wesleyegberto.doitapp.business.validations.ValidEntity;
 import com.github.wesleyegberto.doitapp.business.reminders.control.ToDoAudit;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
