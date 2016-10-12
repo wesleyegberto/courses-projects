@@ -2,13 +2,6 @@ package com.github.wesleyegberto.doitapp.business.reminders.entity;
 
 import com.github.wesleyegberto.doitapp.business.CrossCheck;
 import com.github.wesleyegberto.doitapp.business.ValidEntity;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.TextMessage;
-import javax.mail.Session;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -108,26 +101,10 @@ public class ToDo implements ValidEntity {
     public int getVersion() {
         return version;
     }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    private Session getS() throws NamingException {
-        Context c = new InitialContext();
-        return (Session) c.lookup("java:comp/env/s");
-    }
-
-    private Message createJMSMessageFord(javax.jms.Session session, Object messageData) throws JMSException {
-        // TODO create and populate message to send
-        TextMessage tm = session.createTextMessage();
-        tm.setText(messageData.toString());
-        return tm;
-    }
-
+    
     @Override
     public boolean isValid() {
-        return (priority > 10 && description != null || priority <= 10);
+        return (priority <= 10 || priority > 10 && description != null && !description.isEmpty());
     }
 
 }
