@@ -2,7 +2,9 @@ package com.github.wesleyegberto.doitapp.business.reminders.entity;
 
 import com.github.wesleyegberto.doitapp.business.CrossCheck;
 import com.github.wesleyegberto.doitapp.business.ValidEntity;
+import com.github.wesleyegberto.doitapp.business.reminders.control.ToDoAudit;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -24,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NamedQuery(name = ToDo.FETCH_ALL, query = "SELECT t FROM ToDo t")
 @CrossCheck
+@EntityListeners({ ToDoAudit.class })
 public class ToDo implements ValidEntity {
     
     @Id
