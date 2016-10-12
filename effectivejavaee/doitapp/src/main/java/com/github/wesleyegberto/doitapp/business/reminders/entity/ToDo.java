@@ -26,16 +26,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @NamedQuery(name = ToDo.FETCH_ALL, query = "SELECT t FROM ToDo t")
 @CrossCheck
-@EntityListeners({ ToDoAudit.class })
+@EntityListeners({ToDoAudit.class})
 public class ToDo implements ValidEntity {
-    
+
     @Id
     @GeneratedValue
     private long id;
-    @NotNull @Size(min = 5, max = 100)
+    @NotNull
+    @Size(min = 5, max = 100)
     private String caption;
     private String description;
-    @Min(0) @Max(100)
+    @Min(0)
+    @Max(100)
     private int priority;
     private boolean done;
     @Version
@@ -44,7 +46,7 @@ public class ToDo implements ValidEntity {
     // JPA
     private static final String PREFIX = "reminders.entity.ToDo";
     public static final String FETCH_ALL = PREFIX + ".fetchAll";
-    
+
     public ToDo() {
     }
 
@@ -60,7 +62,7 @@ public class ToDo implements ValidEntity {
         this.description = description;
         this.priority = priority;
     }
-    
+
     public long getId() {
         return id;
     }
@@ -96,7 +98,7 @@ public class ToDo implements ValidEntity {
     public void setDone(boolean done) {
         this.done = done;
     }
-    
+
     public boolean getStatus() {
         return this.done;
     }
@@ -104,10 +106,15 @@ public class ToDo implements ValidEntity {
     public int getVersion() {
         return version;
     }
-    
+
     @Override
     public boolean isValid() {
         return (priority <= 10 || priority > 10 && description != null && !description.isEmpty());
     }
 
+    @Override
+    public String toString() {
+        return "ToDo{" + "id=" + id + ", caption=" + caption + ", description=" + description
+               + ", priority=" + priority + ", done=" + done + ", version=" + version + '}';
+    }
 }
