@@ -2,3 +2,13 @@ nb-configuration.xml
 target/
 *.class
 *.jar
+*.map
+
+/node_modules
+/typings
+/.vscode
+*/app/*.js
+*.map
+*.log
+.idea
+.DS_Store
