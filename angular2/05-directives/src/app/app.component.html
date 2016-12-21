@@ -1,0 +1,20 @@
+<h1>{{title}}</h1>
+<p yellow-background>
+    This background will change because of the directive...
+</p>
+
+<p mouse-events>
+    This will change some attributes depending of the mouse action.
+</p>
+
+<p [highlight]="'red'" [default-color]="'blue'">
+    This will change when the pointer is enter or leave the element.
+</p>
+
+<div *ngIf="showContent">
+    The content is showing.
+</div>
+<div *ngElse="showContent">
+    The content is hiding.
+</div>
+<button (click)="changeVisibility()">Invert value</button>
