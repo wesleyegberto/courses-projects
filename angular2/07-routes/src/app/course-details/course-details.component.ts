@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
+
+import { CourseService } from './../courses/course.service';
+import { Course } from './../courses/Course';
 
 @Component({
   selector: 'app-course-details',
@@ -9,13 +12,22 @@ import { Subscription } from 'rxjs/Rx';
 })
 export class CourseDetailsComponent implements OnInit, OnDestroy {
 
+  public course: Course;
   public courseId: string;
   private subscription: Subscription;
 
-  constructor(private router: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router, private courseService: CourseService) { }
 
   ngOnInit() {
-    this.subscription = this.router.params.subscribe((params: any) => this.courseId = params['id']);
+    this.subscription = this.route.params.subscribe((params: any) => {
+      this.courseId = params['id'];
+
+      this.course = this.courseService.getCourse(this.courseId);
+
+      if (this.course == null) {
+        this.router.navigate(['/course-not-found', this.courseId]);
+      }
+    });
   }
 
   ngOnDestroy() {

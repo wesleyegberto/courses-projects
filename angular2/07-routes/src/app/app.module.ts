@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { CourseService } from './courses/course.service';
+import { CourseNotFoundComponent } from './course-not-found/course-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     HomeComponent,
     LoginComponent,
     CoursesComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    CourseNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,9 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [
+    CourseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
