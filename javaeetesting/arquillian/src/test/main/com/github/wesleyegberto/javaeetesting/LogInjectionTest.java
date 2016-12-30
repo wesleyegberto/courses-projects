@@ -4,12 +4,12 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-public class ProductManager {
-	
+public class LogInjectionTest {
+
 	@Inject
-	Logger LOG;
+	Logger log;
 	
-	public String status() {
-		return "up";
+	public Logger getLog() {
+		return log;
 	}
 }

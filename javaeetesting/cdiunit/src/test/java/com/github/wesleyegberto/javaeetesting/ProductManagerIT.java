@@ -6,13 +6,11 @@ import static org.junit.Assert.assertThat;
 
 import javax.inject.Inject;
 
-import org.apache.deltaspike.testcontrol.api.junit.CdiTestRunner;
+import org.jglue.cdiunit.CdiRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.github.wesleyegberto.javaeetesting.ProductManager;
-
-@RunWith(CdiTestRunner.class)
+@RunWith(CdiRunner.class)
 public class ProductManagerIT {
 
 	@Inject

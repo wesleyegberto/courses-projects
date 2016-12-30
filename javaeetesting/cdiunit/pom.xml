@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.wesleyegberto.javaeetesting</groupId>
-	<artifactId>deltaspike</artifactId>
+	<artifactId>cdiunit</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
@@ -12,36 +12,21 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Deltaspike dependencies -->
 		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-test-control-module-impl</artifactId>
-			<version>1.5.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.cdictrl</groupId>
-			<artifactId>deltaspike-cdictrl-weld</artifactId>
-			<version>1.5.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.weld.se</groupId>
-			<artifactId>weld-se-core</artifactId>
-			<version>2.3.2.Final</version>
+			<groupId>org.jglue.cdi-unit</groupId>
+			<artifactId>cdi-unit</artifactId>
+			<version>3.1.4</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>deltaspike</finalName>
+		<finalName>cdiunit</finalName>
 	</build>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>

@@ -20,10 +20,13 @@ public class ProductManagerIT {
 	@Inject
 	ProductManager productManager;
 	
+	@Inject
+	LogInjectionTest logInjectionTest;
+	
 	@Deployment
 	public static WebArchive deploy() {
 		return ShrinkWrap.create(WebArchive.class)
-				.addClasses(ProductManager.class)
+				.addClasses(ProductManager.class, LoggerProducer.class, LogInjectionTest.class)
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 		
@@ -33,5 +36,12 @@ public class ProductManagerIT {
 		String expected = "up";
 		String current = productManager.status();
 		assertThat(current, is(expected));
+	}
+	
+	@Test
+	public void should_inject_log() {
+		String expected = LogInjectionTest.class.getName();
+		String actual = logInjectionTest.getLog().getName();
+		assertThat(actual, is(expected));
 	}
 }
