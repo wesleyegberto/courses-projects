@@ -1,9 +1,14 @@
 nb-configuration.xml
 .settings/
 target/
+nbproject/
 *.class
 *.jar
 *.map
+.project
+.classpath
+.tern-project
+
 
 /node_modules
 /typings

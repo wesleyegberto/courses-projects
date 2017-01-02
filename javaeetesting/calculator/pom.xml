@@ -2,18 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.airhacks</groupId>
-    <artifactId>hello</artifactId>
+    <artifactId>calculator</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    
     <dependencies>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -21,38 +13,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.airhacks.rulz</groupId>
-            <artifactId>em</artifactId>
-            <version>0.0.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- For JPA testing -->
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>eclipselink</artifactId>
-            <version>2.6.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>10.11.1.1</version>
-            <scope>test</scope>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
         <plugins>
-        	<!-- code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.2.201409121644</version>
+                <version>0.7.5.201505241946</version>
                 <executions>
                     <execution>
                         <goals>
@@ -80,8 +52,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
-            <!-- Mutation test -->
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
@@ -97,19 +67,7 @@
                 </executions>
             </plugin>
         </plugins>
-        <finalName>hello</finalName>
-        
-        <!-- Configuration using Maven -->
-        <resources>
-            <resource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <!-- Default values, we can overwrite it passing environment vars through -D -->
-        <filters>
-            <filter>src/test/filters/env.properties</filter>
-        </filters>
+        <finalName>calculator</finalName>
     </build>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
