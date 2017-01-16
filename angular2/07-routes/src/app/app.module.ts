@@ -5,11 +5,6 @@ import { HttpModule } from '@angular/http';
 
 // import { routing } from './app.routing';
 import { AppRoutingModule } from './app.routing.module';
-import { CourseRoutingModule } from './courses/course.routing.module';
-import { CourseModule } from './courses/course.module';
-import { StudentsRoutingModule } from './students/students.routing.module';
-import { StudentsModule } from './students/students.module';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -26,11 +21,11 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     // routing
     AppRoutingModule,
-    CourseRoutingModule,
-    StudentsRoutingModule,
-
-    CourseModule,
-    StudentsModule
+    // Tirado para poder fazer lazy load
+    // CourseRoutingModule,
+    // StudentsRoutingModule,
+    // CourseModule,
+    // StudentsModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

@@ -2,7 +2,9 @@
 <p>Page: {{page}}</p>
 
 <div class="collection">
-    <a class="collection-item" *ngFor="let course of courses" [routerLink]="['/course', course.id]">{{course.name}}</a>
+    <a class="collection-item" *ngFor="let course of courses" [routerLink]="['/courses', course.id]">{{course.name}}</a>
 </div>
 <a class="waves-effect waves-light btn" (click)="previousPage()">Previous</a>
 <a class="waves-effect waves-light btn" (click)="nextPage()">Next</a>
+<br/>
+<router-outlet></router-outlet>
