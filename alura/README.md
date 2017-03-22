@@ -1,13 +1,12 @@
-Projetos dos Cursos
-##########
+# Projects and Courses
 
 
 ## Java
-* Refatoração
+* Refactoring
 * Collection
 * Reflection
 * Thread
-* XML e XStream
+* XML and XStream
 
 ## Java Integrations
 * Java REST
@@ -17,7 +16,7 @@ Projetos dos Cursos
 ## Java Tests
 * TDD
 * Mockito
-* JPA - Testes de integração
+* JPA - Integration Tests
 
 ## Java Web e EE
 * Servlet
@@ -27,3 +26,4 @@ Projetos dos Cursos
 * CDI 1.2
 * JSF 2.2
 * EJB 3.1
+* Spring MVC
