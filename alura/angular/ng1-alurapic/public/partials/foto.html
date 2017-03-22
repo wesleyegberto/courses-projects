@@ -1,0 +1,49 @@
+<h2>Cadastro de Foto</h2>
+<form novalidate name="formulario" ng-submit="salvarFoto()">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label for="titulo">Título</label>
+				<input type="text" class="form-control" name="titulo" ng-model="foto.titulo" required ng-maxlength="20" />
+				<span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required">
+					Título é obrigatório
+				</span>
+				<span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.maxlength">
+					Tamanho deve ter no máximo 20 caracteres
+				</span>
+			</div>
+			<div class="form-group">
+				<label for="url">Url da foto</label>
+				<input type="text" class="form-control" name="url" ng-model="foto.url" required />
+				<span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.url.$error.required">
+					URL da imagem é obrigatória
+				</span>
+			</div>
+			<div class="form-group">
+				<label for="grupo">Grupo</label>
+				<select class="form-control" name="grupo" ng-model="foto.grupo" required
+					ng-controller="GruposController"
+					ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+					<option value="">Selecione um grupo</option>
+				</select>
+				<span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.grupo.$error.required">
+					Grupo é obrigatório
+				</span>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<minha-foto ng-show="foto.url" url-imagem="{{foto.url}}" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<input type="submit" class="btn btn-primary" value="Salvar" ng-disabled="formulario.$invalid" />
+			<a href="fotos" class="btn btn-default" meu-foco evento="fotoSalva">Voltar</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="alert alert-info" ng-show="mensagem.length">{{mensagem}}</div>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>ToyCommerce</title>
+	</head>
+	<body>
+		<h1>Listagem de Produtos</h1>
+		<table border="1px">
+			<tr>
+                <td>ID</td>
+                <td>Título</td>
+                <td>ISBN</td>
+                <td>Data lançamento</td>
+                <td>Preço</td>
+            </tr>
+            <% for(var i in listaProdutos) {
+            	var prod = listaProdutos[i];%>
+            <tr>
+                <td><%=prod.id%></td>
+                <td><%=prod.titulo%></td>
+                <td><%=prod.isbn%></td>
+                <td><%=prod.dataLancamento%></td>
+                <td><%=prod.preco%></td>
+            </tr>
+            <% } %>
+		</table>
+	</body>
+</html>

@@ -2,17 +2,19 @@ nb-configuration.xml
 .settings/
 target/
 nbproject/
+bin/
 *.class
 *.jar
 *.map
 .project
 .classpath
+.editorconfig
 .tern-project
 
 
-/node_modules
-/typings
-/.vscode
+node_modules/
+typings
+.vscode/
 */app/*.js
 *.map
 *.log
