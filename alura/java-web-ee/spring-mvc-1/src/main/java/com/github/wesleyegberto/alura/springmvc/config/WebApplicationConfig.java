@@ -2,6 +2,7 @@ package com.github.wesleyegberto.alura.springmvc.config;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.cache.CacheManager;
@@ -15,6 +16,8 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -137,6 +140,24 @@ public class WebApplicationConfig extends WebMvcConfigurerAdapter {
 	public LocaleResolver localeResolver() {
 		// armazena e recupera o locale do cookie
 		return new CookieLocaleResolver();
+	}
+	
+	@Bean // produz o enviador de e-mail
+	public MailSender mailSender(){
+	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+	    mailSender.setHost("smtp.gmail.com");
+	    mailSender.setUsername("youremail@gmail.com");
+	    mailSender.setPassword("yourUltraSecretPasswordFromMatrix");
+	    mailSender.setPort(587);
+
+	    Properties mailProperties = new Properties();
+	    mailProperties.put("mail.smtp.EnableSSL.enable","true");
+	    mailProperties.put("mail.smpt.starttls.enable", true);
+	    mailProperties.put("mail.smtp.starttls.required", true);
+	    mailProperties.put("mail.smtp.auth", true);
+
+	    mailSender.setJavaMailProperties(mailProperties);
+	    return mailSender;
 	}
 	
 }

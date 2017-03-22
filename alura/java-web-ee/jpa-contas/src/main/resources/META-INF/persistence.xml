@@ -7,7 +7,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	<persistence-unit name="contas-mysql">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.caelum.financas.modelo.Conta</class>
-        <class>br.com.caelum.financas.modelo.Movimentacao</class>
+		<class>br.com.caelum.financas.modelo.Movimentacao</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/contas" />
@@ -20,11 +20,11 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
 	</persistence-unit>
-	
+
 	<persistence-unit name="contas-hsqldb">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.caelum.financas.modelo.Conta</class>
-        <class>br.com.caelum.financas.modelo.Movimentacao</class>
+		<class>br.com.caelum.financas.modelo.Movimentacao</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:contas" />
@@ -32,12 +32,9 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 			<property name="javax.persistence.jdbc.password" value="" />
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
-			<!-- Opções:
-				- validate: valida mas não altera;
-				- update: cria/atualiza o esquema do banco preservando os dados;
-				- create: cria o esquema destruindo os dados;
-				- create-drop: cria e remove no final da sessão.
-			 -->
+			<!-- Opções: - validate: valida mas não altera; - update: cria/atualiza 
+				o esquema do banco preservando os dados; - create: cria o esquema destruindo 
+				os dados; - create-drop: cria e remove no final da sessão. -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />

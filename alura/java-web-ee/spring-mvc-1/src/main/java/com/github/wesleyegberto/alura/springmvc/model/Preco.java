@@ -1,11 +1,13 @@
 package com.github.wesleyegberto.alura.springmvc.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Preco {
+public class Preco implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private TipoPreco tipo;
 	private BigDecimal preco = BigDecimal.ZERO;
 

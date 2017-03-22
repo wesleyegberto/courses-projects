@@ -65,7 +65,7 @@
 
 		<dependency>
 			<groupId>br.com.alura</groupId>
-			<artifactId>alura-lib</artifactId>
+			<artifactId>cdi-alura-lib</artifactId>
 			<version>1.0</version>
 		</dependency>
 

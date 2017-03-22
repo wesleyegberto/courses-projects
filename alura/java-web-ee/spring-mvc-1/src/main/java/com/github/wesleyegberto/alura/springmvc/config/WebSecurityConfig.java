@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			// Público
 			.antMatchers(HttpMethod.GET, "/produtos", "/produtos/**").permitAll()
 			.antMatchers("/carrinho/**").permitAll()
-			.antMatchers("/pagamento/finalizar").permitAll()
+			.antMatchers("/pagamento/**").permitAll()
 			.antMatchers("/").permitAll()
 			.anyRequest().authenticated()
 			.and()

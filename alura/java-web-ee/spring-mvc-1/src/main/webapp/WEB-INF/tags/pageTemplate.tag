@@ -12,9 +12,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>${titulo}</title>
-	<c:url value="/" var="rootScope" />
-	<link rel="stylesheet" href="${rootScope}resources/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="${rootScope}resources/css/bootstrap-theme.min.css" />
+	<c:url value="/" var="rootContext" />
+	<link rel="stylesheet" href="${rootContext}resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="${rootContext}resources/css/bootstrap-theme.min.css" />
 </head>
 <body>
 	<div class="container">

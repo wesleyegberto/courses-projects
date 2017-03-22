@@ -37,11 +37,14 @@ public class SpringMvcConfig extends AbstractAnnotationConfigDispatcherServletIn
 		CharacterEncodingFilter encodeFilter = new CharacterEncodingFilter();
 		encodeFilter.setEncoding("UTF-8");
 		return new Filter[] {
-			encodeFilter
+			encodeFilter,
+			// new OpenEntityManagerInViewFilter() Pattern OpenSessionInView
 		};
 	}
 
-	@Override // usando profile precisamos ativar o default
+	// usando profile precisamos ativar o default em DESENV
+	// Em produção devemos usar -Dspring.profile
+	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 	    super.onStartup(servletContext);
 	    servletContext.addListener(new RequestContextListener());

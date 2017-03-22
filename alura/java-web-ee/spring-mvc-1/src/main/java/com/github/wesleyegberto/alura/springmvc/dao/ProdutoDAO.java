@@ -30,7 +30,7 @@ public class ProdutoDAO {
 	}
 
 	public Produto getPorId(long id) {
-		return em.createQuery("select p from Produto p join fetch p.precos where p.id = :id", Produto.class)
+		return em.createQuery("select distinct(p) from Produto p join fetch p.precos where p.id = :id", Produto.class)
 					.setParameter("id", id).getSingleResult();
 	}
 	
