@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
+	<!--
+		Registra a Fabrica CDI no JNDI do Tomcat (não é permitido fazer no código - readonly).
+		Se usar Mojarra 2.2.11 e OmniFaces 2.4 ou mais recentes não é preciso pois conseguem encontrar a 
+		fábrica usar ServletContext
+	-->
    <Resource name="BeanManager" 
       auth="Container"
       type="javax.enterprise.inject.spi.BeanManager"
