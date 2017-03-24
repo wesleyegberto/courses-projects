@@ -1,0 +1,7 @@
+.panel-heading > span {
+  font-weight: bold;
+}
+
+.efeito {
+    box-shadow: 2px 2px 10px;
+}

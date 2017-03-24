@@ -1,0 +1,33 @@
+<h1>Cadastro de Foto</h1>
+<form class="row" [formGroup]="frmGrpFoto"  (submit)="cadastra($event)">
+    <mensagem [erro]="ocorreuErro" [mensagem]="mensagem"></mensagem>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Título</label>
+            <!-- data bind feio -->
+            <input class="form-control" autocomplete="off" name="titulo" formControlName="titulo"
+              (input)="foto.titulo=$event.target.value" [value]="foto.titulo">
+            <span class="form-control alert-danger" *ngIf="frmGrpFoto.controls.titulo.invalid">
+                <span *ngIf="frmGrpFoto.controls.titulo.errors.required">Título é obrigatório</span>
+                <span *ngIf="frmGrpFoto.controls.titulo.errors.minlength">Deve ter no mínimo 4 caracteres</span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label>URL</label>
+            <input class="form-control" autocomplete="off" name="url" formControlName="url" [(ngModel)]="foto.url">
+            <span class="form-control alert-danger" *ngIf="frmGrpFoto.controls.url.invalid">URL é obrigatório</span>
+        </div>
+        <div class="form-group">
+            <label>Descrição</label>
+            <textarea class="form-control" autocomplete="off" name="descricao" formControlName="descricao" [(ngModel)]="foto.descricao">
+            </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="frmGrpFoto.invalid">Salvar</button>
+        <a [routerLink]="['']" class="btn btn-default">Voltar</a>
+        <hr />
+    </div>
+    <div class="col-md-6">
+        <foto [title]="foto.title" [url]="foto.url"></foto>
+    </div>
+</form>

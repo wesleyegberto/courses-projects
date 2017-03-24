@@ -11,12 +11,13 @@ build/
 .classpath
 .editorconfig
 .tern-project
-
-
+${db}/
 node_modules/
 typings
 .vscode/
-*/app/*.js
+*/src/*component.js
+*/src/*module.js
+*/src/app/*.js
 *.map
 *.log
 .idea
