@@ -20,10 +20,14 @@
 <hr/>
 
 <div class="row">
-    <painel *ngFor="let foto of fotos | filtroPorTitulo: titulo.value" [titulo]="foto.titulo" class="col-md-2">
+    <painel #painel *ngFor="let foto of fotos | filtroPorTitulo: titulo.value" [titulo]="foto.titulo" class="col-md-2">
         <a [routerLink]="['edicao', foto._id]">
-            <foto [title]="foto.titulo" url="{{foto.url}}" ></foto>
+            <foto [title]="foto.titulo" url="{{foto.url}}"></foto>
         </a>
-        <button class="btn btn-danger btn-block" (click)="remove(foto)">Remover</button>
+        <!--<botao classe="btn-danger btn-block" value="Remover" confirmar="true" (evento)="remove(foto, painel)"></botao>-->
+
+        <botao value="Remover" classe="btn-danger btn-block" (evento)="modal.show()" [confirmar]="false"></botao>
+        <modal #modal frase="Tem certeza que deseja remover está foto?" (confirma)="remove(foto, painel)"></modal>
+        <!--<button class="btn btn-danger btn-block" (click)="remove(foto)">Remover</button>-->
     </painel>
 </div>

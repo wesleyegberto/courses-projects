@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FotoModule } from './foto/foto.module';
 import { PainelModule } from './painel/painel.module';
 import { MensagemModule } from "./mensagem/mensagem.module";
+import { BotaoModule } from "./botao/botao.module";
+import { ModalModule } from "./modal/modal.module";
 
 import { ROTAS } from './app.routes';
 import { AppComponent } from './app.component'; // classe AppComponent precisa do exports
@@ -21,6 +23,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     FotoModule, // todos os componentes desse módulo poderão usar
     PainelModule,
     MensagemModule,
+    BotaoModule,
+    ModalModule,
     ROTAS // importamos as rotas SPA
   ],
   declarations: [ AppComponent, CadastroComponent, ListagemComponent ],

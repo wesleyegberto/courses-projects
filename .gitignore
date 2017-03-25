@@ -15,10 +15,14 @@ ${db}/
 node_modules/
 typings
 .vscode/
-*/src/*component.js
-*/src/*module.js
-*/src/app/*.js
+*ouoes.js
+*/src/*.js
 *.map
 *.log
 .idea
 .DS_Store
+*.component.js
+*.pipes.js
+*.module.js
+*.service.js
+*.routes.js

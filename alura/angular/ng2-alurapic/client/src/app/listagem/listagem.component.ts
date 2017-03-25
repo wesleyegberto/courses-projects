@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { FotoService } from "../foto/foto.service";
 import { Foto } from "../foto/foto";
+import { FotoService } from "../foto/foto.service";
+import { PainelComponent } from "../painel/painel.component";
 
 @Component({
     moduleId: module.id,
@@ -31,13 +32,15 @@ export class ListagemComponent implements OnInit {
       });
   }
 
-  remove(foto: Foto) {
-    console.log(foto);
+  remove(foto: Foto, painel: PainelComponent) {
     this.fotoService.removeFoto(foto)
         .subscribe(() => {
-          this.fotos = this.fotos.filter(ft => ft._id != foto._id);
-          this.ocorreuErro = false;
-          this.mensagem = 'Foto removida com sucesso.';
+          // chama o fadeOut que usa o jQuery e depois executa nosso callback
+          painel.fadeOut(() => {
+            this.fotos = this.fotos.filter(ft => ft._id != foto._id);
+            this.ocorreuErro = false;
+            this.mensagem = 'Foto removida com sucesso.';
+          });
         }, err => {
           console.log(err);
           this.ocorreuErro = true;
