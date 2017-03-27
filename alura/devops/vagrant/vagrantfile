@@ -1,0 +1,19 @@
+# Configura uma VM usando a versão 2 do Vagrant
+Vagrant.configure("2") do |config|
+	# todas as VMs terão o mesmo SO
+	config.vm.box = "hashicorp/precise32"
+
+  	# define uma VM chamada web (podemos ter outras)
+	config.vm.define :web do |web_config|
+		# configura a rede
+		web_config.vm.network "private_network", ip: "192.168.50.10"
+
+		# podemos executar um script para instalar o Puppet (caso nao esteja)
+		web_config.vm.provision "shell", path: "manifests/install_puppet.sh"
+
+		# executa o provisionamento com Puppet automaticamente
+		web_config.vm.provision "puppet" do |puppet|
+        	puppet.manifest_file = "web.pp"
+        end
+  	end
+end
