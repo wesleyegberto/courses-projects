@@ -18,7 +18,7 @@ ADD app/ ${WEBDIR}html
 COPY app/ ${WEBDIR}/app
 
 # informa à engine que o container escuta na porta em runtime
-EXPOSE 8090
+EXPOSE 80
 
 # define o comando que rodará o processo quando o container iniciar (para não precisar passar no run)
 # comando abaixo: /usr/sbin/apache2ctl -D FOREGROUND
