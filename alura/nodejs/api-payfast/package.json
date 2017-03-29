@@ -1,0 +1,20 @@
+{
+  "name": "api-payfast",
+  "version": "1.0.0",
+  "description": "API HTTP",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wesley Egberto",
+  "repository": "https://github.com/wesleyegberto/courses",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "consign": "^0.1.2",
+    "express": "^4.15.2",
+    "express-validator": "^3.1.2",
+    "mysql": "^2.13.0"
+  }
+}
