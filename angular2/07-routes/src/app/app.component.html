@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="usuarioValidado">
     <div class="nav-wrapper">
         <a routerLink="" class="brand-logo right">Routes</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -10,10 +10,11 @@
         </ul>
     </div>
 </nav>
-
 <div class="container">
-    <p>Enter the course ID:</p>
-    <input #courseId />
+    <div *ngIf="usuarioValidado">
+        <p>Enter the course ID:</p>
+        <input #courseId />
+    </div>
 
     <router-outlet></router-outlet>
 </div>

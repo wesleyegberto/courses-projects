@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
+import { AuthService } from './login/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,7 @@ import { LoginComponent } from './login/login.component';
     // CourseModule,
     // StudentsModule
   ],
-  providers: [],
+  providers: [ AuthService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

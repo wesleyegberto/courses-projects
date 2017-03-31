@@ -9,7 +9,7 @@ const APP_ROUTES: Routes = [
     { path: 'courses', loadChildren: 'app/courses/course.module#CourseModule' },
     { path: 'students', loadChildren: 'app/students/students.module#StudentsModule' },
     { path: 'login', component: LoginComponent },
-    { path: '', component: HomeComponent }  
+    { path: '', component: HomeComponent }
 ];
 
 // export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES)

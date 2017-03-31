@@ -18,6 +18,6 @@ export class CourseService {
   }
 
   getCourse(id): Course {
-    return this.courses.find(c => c.id == id);
+    return this.courses.find(c => c.id === id);
   }
 }
