@@ -1,3 +1,5 @@
+const logger = require('../utils/logger.js');
+
 function sendError(response, httpStatus, internalStatus, internalMessage, errorDetails) {
 	response.status(status)
 	.send(error)
@@ -15,13 +17,23 @@ module.exports = function(app) {
 				return;
 			}
 			if(paymentResult && paymentResult.length && paymentResult[0].id > 0) {
-				var payment = paymentResult[0];
-				payment.status = 'PAID';
-				paymentDao.update(payment, (err, result) => {
+				let payment = paymentResult[0];
+				// call a service
+				let cardService = new app.services.cardService();
+
+				cardService.authorize(payment, (errRest, reqRest, respRest, resultRest) => {
 					if (err) {
-						sendError(resp, 500, 2, 'An error occurred during the update', err);
+						sendError(resp, 500, 2, 'An error occurred during the validation', err);
 					} else {
-						resp.status(204).end();
+						console.log(resultRest);
+						payment.status = 'PAID';
+						paymentDao.update(payment, (err, result) => {
+							if (err) {
+								sendError(resp, 500, 2, 'An error occurred during the update', err);
+							} else {
+								resp.status(204).end();
+							}
+						});
 					}
 					connection.end();
 				});
@@ -55,6 +67,7 @@ module.exports = function(app) {
 
 		paymentDao.save(payment, (err, result) => {
 			if (err) {
+				logger.error('Error to store a payment: ' + JSON.stringify(err));
 				sendError(resp, 500, 2, 'An error occurred during the insert', err);
 			} else {
 				resp.status(201)
@@ -76,6 +89,34 @@ module.exports = function(app) {
 				resp.status(404).end();
 			}
 			connection.end();
+		});
+	});
+
+	app.get('/payments/:id', (req, resp) => {
+		let connection = app.dao.connectionFactory();
+		let paymentDao = new app.dao.paymentDao(connection);
+		let cache = app.services.cacheClient();
+		let paymentId = req.params.id;
+
+		cache.get('payment-2' + paymentId, (err, cachedPayment) => {
+			if(err || !cachedPayment) {
+				logger.info('MISS: payment');
+				paymentDao.getById(paymentId, (err, paymentResult) => {
+					if (err) {
+						sendError(resp, 500, 2, 'An error occurred during the search', err);
+					} else if(paymentResult && paymentResult.length && paymentResult[0].id > 0) {
+						let payment = paymentResult[0];
+						cache.set('payment-' + paymentId, payment);
+						resp.json(payment);
+					} else {
+						resp.status(404).end();
+					}
+					connection.end();
+				});
+			} else {
+				resp.json(cachedPayment);
+				connection.end();
+			}
 		});
 	});
 }
