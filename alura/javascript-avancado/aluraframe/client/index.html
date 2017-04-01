@@ -28,17 +28,15 @@
     </form>
     
     <div class="text-center">
-        <button class="btn btn-primary text-center" type="button">
-            Importar Negociações
-        </button>
-        <button class="btn btn-primary text-center" type="button">
-            Apagar
-        </button>
+        <button class="btn btn-primary text-center" type="button">Importar Negociações</button>
+        <button class="btn btn-primary text-center" type="button" onclick="negociacaoCtrl.apaga()">Apagar</button>
     </div> 
     <br/><br/>
     <div id="negociacoesView"></div>
 </body>
-<script src="js/app/helper/DateHelper.js"></script></script>
+<script src="js/app/helper/DateHelper.js"></script>
+<script src="js/app/helper/ProxyFactory.js"></script>
+<script src="js/app/helper/Bind.js"></script>
 <script src="js/app/view/View.js"></script>
 <script src="js/app/model/Mensagem.js"></script>
 <script src="js/app/view/MensagemView.js"></script>
