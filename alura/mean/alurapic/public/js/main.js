@@ -1,5 +1,12 @@
 angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResource', 'meusServicos'])
-	.config(function($routeProvider, $locationProvider) {
+	.config(function($routeProvider, $locationProvider, $httpProvider) {
+		// ativa o interceptador para manipular o token
+		$httpProvider.interceptors.push('tokenInterceptor');
+
+		$routeProvider.when('/login', {
+			templateUrl: 'partials/login.html',
+			controller: 'LoginController'
+		});
 
 		$routeProvider.when('/fotos', {
 			templateUrl: 'partials/principal.html',

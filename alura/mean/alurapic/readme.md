@@ -2,8 +2,9 @@
 
 AluraPic application made using stack MEAN.
 
-## Modules
-* Express
-* Consign
-* Body-Parser
-* Mongoose
+## Node Modules
+* express
+* consign
+* body-parser
+* mongoose
+* jsonwebtoken
