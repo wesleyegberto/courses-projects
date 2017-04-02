@@ -10,9 +10,9 @@ class ListaNegociacoes {
 	}
 
 	adiciona(negociacao) {
-		// this._negociacoes.push(negociacao);
+		this._negociacoes.push(negociacao);
 		// para disparar o proxy
-		this._negociacoes = [].concat(this._negociacoes, negociacao);
+		// this._negociacoes = [].concat(this._negociacoes, negociacao);
 	}
 
 	get negociacoes() {
@@ -22,6 +22,14 @@ class ListaNegociacoes {
 
 	esvazia() {
 		this._negociacoes = [];
+	}
+
+	inverteOrdem() {
+		this._negociacoes.reverse();
+	}
+
+	ordena(criterio) {
+		this._negociacoes.sort(criterio);        
 	}
 
 	get volumeTotal() {

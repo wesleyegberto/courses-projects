@@ -20,7 +20,8 @@ class NegociacaoController {
     // this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), ['adiciona', 'esvazia'], model => this._negociacoesView.update(model));
     // this._negociacoesView.update(this._listaNegociacoes);
 
-    this._listaNegociacoes = new Bind(new ListaNegociacoes(), new NegociacoesView($('#negociacoesView')), 'adiciona', 'esvazia');
+    this._listaNegociacoes = new Bind(new ListaNegociacoes(), new NegociacoesView($('#negociacoesView')),
+                                      'adiciona', 'esvazia', 'ordena', 'inverteOrdem');
   }
 
   adiciona(event) {
@@ -66,12 +67,21 @@ class NegociacaoController {
         service.importaNegociacoesSemanaAtual(),
         service.importaNegociacoesSemanaPassada(),
         service.importaNegociacoesSemanaRetrasada()
-    ]).then(negociacoes => {
+      ]).then(negociacoes => {
         negociacoes
           .reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
           .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
         this._mensagem.texto = 'Negociações importadas com sucesso';
-    })
-    .catch(erro => this._mensagem.texto = erro);
+      })
+      .catch(erro => this._mensagem.texto = erro);
+  }
+
+  ordena(coluna) {
+    if (this._ordemAtual == coluna) {
+      this._listaNegociacoes.inverteOrdem();
+    } else {
+      this._listaNegociacoes.ordena((a, b) => a[coluna] - b[coluna]);
+    }
+    this._ordemAtual = coluna;
   }
 }

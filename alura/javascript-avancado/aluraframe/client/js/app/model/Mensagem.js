@@ -1,6 +1,7 @@
 class Mensagem {
-  constructor(texto = '') {
-    this._texto = texto;
+  constructor(texto) {
+    // Edge 13 não suporta params opcionais
+    this._texto = texto || '';
   }
 
   get texto() {
