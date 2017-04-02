@@ -19,6 +19,8 @@ export class SigninComponent implements OnInit {
     private authService: AuthService) {}
 
   onSignin() {
+    // event.preventDefault();
+    console.log(this.form.value);
     this.authService.signIn(this.form.value);
   }
 

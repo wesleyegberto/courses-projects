@@ -7,13 +7,10 @@ import { SigninComponent } from './signin/signin.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  { path: 'contacts',
-    loadChildren: 'app/contacts/contacts.module#ContactsModule',
-    canActivate: [AuthGuard]
-  },
-  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'signin', component: SigninComponent },
   { path: 'not-found', component: NotFoundComponent },
+  { path: 'contacts', loadChildren: 'app/contacts/contacts.module#ContactsModule', canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'not-found' }
 ];
 

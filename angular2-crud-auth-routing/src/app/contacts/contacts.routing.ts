@@ -7,13 +7,11 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 import { ContactFormGuard } from './contact-form/contact-form.guard';
 
 const CONTACTS_ROUTES: Routes = [
-  { path: '', component: ContactsComponent, children: [
+  { path: 'contacts', component: ContactsComponent, children: [
       { path: '', component: ContactStartComponent },
-      { path: 'new', component: ContactFormComponent ,
-        canDeactivate: [ContactFormGuard]},
+      { path: 'new', component: ContactFormComponent, canDeactivate: [ContactFormGuard]},
       { path: ':id', component: ContactDetailComponent },
-      { path: ':id/edit', component: ContactFormComponent,
-        canDeactivate: [ContactFormGuard]}
+      { path: ':id/edit', component: ContactFormComponent, canDeactivate: [ContactFormGuard]}
   ]}
 ];
 

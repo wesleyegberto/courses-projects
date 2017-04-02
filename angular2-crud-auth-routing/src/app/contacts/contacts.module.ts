@@ -7,15 +7,15 @@ import { HttpModule }  from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
 import { ContactsInMemoryDS } from './contacts-in-memory-ds';
 
+import { contactsRouting } from './contacts.routing';
+import { ContactFormGuard } from './contact-form/contact-form.guard';
+import { ContactsService } from './contacts.service';
 import { ContactsComponent } from './contacts.component';
 import { ContactStartComponent } from './contact-start.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { contactsRouting } from './contacts.routing';
-import { ContactsService } from './contacts.service';
 import { ContactListItemComponent } from './contact-list-item/contact-list-item.component';
-import { ContactFormGuard } from './contact-form/contact-form.guard';
 
 @NgModule({
     imports: [
