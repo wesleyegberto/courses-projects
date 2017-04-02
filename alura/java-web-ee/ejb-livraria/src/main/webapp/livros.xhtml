@@ -4,7 +4,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
 
 <ui:composition template="_template.xhtml">
 	<ui:define name="corpo">
@@ -36,17 +37,19 @@
 	<h3>Livros</h3>
 	
 	<h:form id="tabelaLivros">
-	    <p:dataTable var="livro" value="#{livroBean.livros}">
-	    
-	        <p:column headerText="Título">
-	            <h:outputText value="#{livro.titulo}" />
-	        </p:column>
-	
-	        <p:column headerText="Autor">
-	            <h:outputText value="#{livro.autor.nome}" />
-	        </p:column>
-	
-	    </p:dataTable>
+		<o:cache scope="application">
+		    <p:dataTable var="livro" value="#{livroBean.livros}">
+		    
+		        <p:column headerText="Título">
+		            <h:outputText value="#{livro.titulo}" />
+		        </p:column>
+		
+		        <p:column headerText="Autor">
+		            <h:outputText value="#{livro.autor.nome}" />
+		        </p:column>
+		
+		    </p:dataTable>
+	    </o:cache>
 	</h:form>
 	</ui:define>
 </ui:composition>

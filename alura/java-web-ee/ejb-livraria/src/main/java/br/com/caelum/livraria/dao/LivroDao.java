@@ -3,6 +3,7 @@ package br.com.caelum.livraria.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.Cache;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -27,5 +28,10 @@ public class LivroDao {
 		TypedQuery<Livro> query = manager.createQuery("select l from Livro l " + "where l.titulo like :pTitulo", Livro.class);
 		query.setParameter("pTitulo", "%" + nome + "%");
 		return query.getResultList();
+	}
+	
+	public void limpaCache() {
+	    Cache cache = manager.getEntityManagerFactory().getCache();
+	    cache.evict(Livro.class);
 	}
 }

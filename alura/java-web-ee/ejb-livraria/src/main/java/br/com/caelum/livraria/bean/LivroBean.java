@@ -44,6 +44,7 @@ public class LivroBean {
 	}
 
 	public List<Livro> getLivros() {
+		System.out.println("Getting Livros");
 		return this.livroDao.todosLivros();
 	}
 }

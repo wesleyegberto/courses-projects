@@ -8,11 +8,18 @@
 
 		<jta-data-source>java:/livrariaDS</jta-data-source>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<shared-cache-mode>ALL</shared-cache-mode>
 		<properties>
 			<!-- Configuracoes especificas do Hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
+			
+			<property name="hibernate.cache.use_query_cache" value="true"/>
+			
+			<!-- Wildfly tem Infinispan que integra com JPA -->
+			<property name="hibernate.cache.infinispan.entity.expiration.lifespan" value="900000"/>
+			<property name="hibernate.cache.infinispan.entity.expiration.max_idle" value="300000"/>
 		</properties>
 	</persistence-unit>
 </persistence>

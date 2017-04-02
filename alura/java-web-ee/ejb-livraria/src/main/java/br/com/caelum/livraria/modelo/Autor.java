@@ -1,11 +1,13 @@
 package br.com.caelum.livraria.modelo;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@Cacheable(true) // cachear toda a entity (não só o ID)
 public class Autor {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
