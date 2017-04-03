@@ -3,20 +3,24 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import { Usuario } from './usuario';
+import { User } from './user';
 
 @Injectable()
 export class AuthService {
-  autenticacaoEmitter = new EventEmitter<boolean>();
+  private userAuthenticated: true;
+  authenticationEmitter = new EventEmitter<boolean>();
 
   constructor() { }
 
-  autentica(usuario: Usuario): Observable<boolean> {
-    let usuarioValido = false;
-    if (usuario.email === 'odair@mail.com' && usuario.senha === '123') {
-      usuarioValido = true;
+  autentica(user: User): Observable<boolean> {
+    if (user.email === 'user@email.com' && user.password === '123') {
+      this.userAuthenticated = true;
     }
-    this.autenticacaoEmitter.emit(usuarioValido);
-    return Observable.of(usuarioValido);
+    this.authenticationEmitter.emit(this.userAuthenticated);
+    return Observable.of(this.userAuthenticated);
+  }
+
+  isUserAuthenticated() {
+    return this.userAuthenticated;
   }
 }

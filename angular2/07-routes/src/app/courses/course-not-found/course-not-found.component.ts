@@ -4,8 +4,7 @@ import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-course-not-found',
-  templateUrl: './course-not-found.component.html',
-  styleUrls: ['./course-not-found.component.css']
+  templateUrl: './course-not-found.component.html'
 })
 export class CourseNotFoundComponent implements OnInit, OnDestroy {
 

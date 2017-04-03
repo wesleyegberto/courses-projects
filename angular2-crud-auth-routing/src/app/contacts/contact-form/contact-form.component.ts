@@ -77,10 +77,10 @@ export class ContactFormComponent implements OnInit, OnDestroy, ComponentCanDeac
     const contactValue = this.form.value;
     let result;
 
-    if (this.isNew){
-      result = this.contactsService.update(contactValue);
-    } else {
+    if (this.isNew) {
       result = this.contactsService.add(contactValue);
+    } else {
+      result = this.contactsService.update(contactValue);
     }
 
     this.form.reset();

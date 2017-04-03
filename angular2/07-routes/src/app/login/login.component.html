@@ -1,19 +1,17 @@
-<p>Entre com seu usuário e senha</p>
+<p>Enter your user and password</p>
 <div class="row">
   <div class="input-field col s12">
-    <input type="text" class="validate" id="email" name="email" [(ngModel)]="usuario.email">
+    <input type="text" class="validate" id="email" name="email" [(ngModel)]="user.email">
     <label class="active" for="email">E-mail</label>
   </div>
 </div>
 <div class="row">
   <div class="input-field col s12">
-    <input type="password" class="validate" id="senha" name="senha" [(ngModel)]="usuario.senha" >
-    <label class="active" for="senha">Senha</label>
+    <input type="password" class="validate" id="password" name="password" [(ngModel)]="user.password" >
+    <label class="active" for="password">Password</label>
   </div>
 </div>
-<button class="btn waves-effect waves-light" type="submit" name="action" (click)="autenticaUsuario()">
-  Login <i class="material-icons right"></i>
+<button class="btn waves-effect waves-light" type="submit" name="action" (click)="authenticateUser()">
+  Signin <i class="material-icons right"></i>
 </button>
-<div class="card-panel red lighten-2" *ngIf="message && message.length">
-  {{message}}
-</div>
+<div class="card-panel red lighten-2" *ngIf="message && message.length">{{message}}</div>

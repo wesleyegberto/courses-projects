@@ -6,15 +6,9 @@
             <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
             <li routerLinkActive="active"><a routerLink="/courses">Courses</a></li>
             <li routerLinkActive="active"><a routerLink="/students">Students</a></li>
-            <li routerLinkActive="active"><a [routerLink]="['courses', courseId.value]">Course with ID</a></li>
         </ul>
     </div>
 </nav>
 <div class="container">
-    <div *ngIf="usuarioValidado">
-        <p>Enter the course ID:</p>
-        <input #courseId />
-    </div>
-
     <router-outlet></router-outlet>
 </div>

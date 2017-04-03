@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Usuario } from './usuario';
+import { User } from './user';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario = new Usuario();
+  user = new User();
   message: string;
 
   constructor(private route: Router, private _authService: AuthService) { }
@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  autenticaUsuario() {
-    console.log(this.usuario);
-    this._authService.autentica(this.usuario)
+  authenticateUser() {
+    console.log(this.user);
+    this._authService.autentica(this.user)
       .subscribe(usuarioValido => {
         if (usuarioValido) {
           this.route.navigate(['/']);

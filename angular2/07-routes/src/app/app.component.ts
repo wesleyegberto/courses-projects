@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private _authService: AuthService) {}
 
   ngOnInit() {
-    this._authService.autenticacaoEmitter
+    this._authService.authenticationEmitter
       .subscribe(usuarioValido => this.usuarioValidado = usuarioValido);
   }
 }

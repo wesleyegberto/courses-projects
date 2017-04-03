@@ -1,10 +1,11 @@
+import { AuthGuard } from './auth/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // import { routing } from './app.routing';
-import { AppRoutingModule } from './app.routing.module';
+import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +30,7 @@ import { AuthService } from './login/auth.service';
     // CourseModule,
     // StudentsModule
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService, AuthGuard ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,10 +1,15 @@
-<p>courses works!</p>
-<p>Page: {{page}}</p>
-
-<div class="collection">
-    <a class="collection-item" *ngFor="let course of courses" [routerLink]="['/courses', course.id]">{{course.name}}</a>
+<div class="row">
+    <div class="col s6">
+        <div class="collection">
+            <a class="collection-item" *ngFor="let course of courses" [routerLink]="['/courses', course.id]">{{course.name}}</a>
+        </div>
+        <div>
+            <a class="waves-effect waves-light btn" (click)="previousPage()">Previous</a>
+            <span>Page: {{page}}</span>
+            <a class="waves-effect waves-light btn" (click)="nextPage()">Next</a>
+        </div>
+    </div>
+    <div class="col s6">
+        <router-outlet></router-outlet>
+    </div>
 </div>
-<a class="waves-effect waves-light btn" (click)="previousPage()">Previous</a>
-<a class="waves-effect waves-light btn" (click)="nextPage()">Next</a>
-<br/>
-<router-outlet></router-outlet>
