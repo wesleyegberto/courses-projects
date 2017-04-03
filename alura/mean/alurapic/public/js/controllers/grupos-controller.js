@@ -1,10 +1,11 @@
 angular.module('alurapic')
 	.controller('GruposController', function($scope, $http) {
+		$scope.grupos = [];
 		$http.get('/v1/grupos')
-			.success(function(grupos) {
-			$scope.grupos = grupos;
+		.then(function(grupos) {
+			$scope.grupos = grupos.data;
 		})
-		.error(function(erro) {
+		.catch(function(erro) {
 			console.log(erro);
 		});
 	});

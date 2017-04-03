@@ -8,3 +8,14 @@ AluraPic application made using stack MEAN.
 * body-parser
 * mongoose
 * jsonwebtoken
+* cookie-parser
+
+
+## Angular & Express
+A token is gerenated when the user signin.
+The API sets the generated token at:
+* Custom header x-access-token
+* Header Set-Header, using httpOnly (the Angular won't access it)
+
+The Angular also store the token in the SessionStorage and LocationStorage.
+On every request, a interceptor insert the header x-access-token.
