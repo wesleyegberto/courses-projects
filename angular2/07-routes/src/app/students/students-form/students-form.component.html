@@ -1,3 +1,16 @@
-<p>
-  students-form works!
-</p>
+<p>Edit</p>
+<form class="row" #frm="ngForm">
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" id="id" name="id" [(ngModel)]="student.id" disabled />
+      <label for="id" class="active">ID</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input type="text" id="name" name="name" [(ngModel)]="student.name" />
+      <label for="name" class="active">Name</label>
+    </div>
+  </div>
+  <a class="waves-effect waves-light btn" disabled>Save</a>
+</form>

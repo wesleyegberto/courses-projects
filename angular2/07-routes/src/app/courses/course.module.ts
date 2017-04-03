@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { CourseRoutingModule } from './course.routing';
+import { CourseRouting } from './course.routing';
+import { CourseGuard } from './guard/course.guard';
 import { CourseService } from './course.service';
 import { CoursesComponent } from './courses.component';
 import { CourseNotFoundComponent } from './course-not-found/course-not-found.component';
@@ -15,7 +16,7 @@ import { CourseFormComponent } from 'app/courses/course-form/course-form.compone
         CommonModule,
         RouterModule,
         FormsModule,
-        CourseRoutingModule
+        CourseRouting
     ],
     exports: [],
     declarations: [
@@ -24,6 +25,6 @@ import { CourseFormComponent } from 'app/courses/course-form/course-form.compone
         CourseNotFoundComponent,
         CourseFormComponent
     ],
-    providers: [ CourseService ]
+    providers: [ CourseService, CourseGuard ]
 })
 export class CourseModule {}

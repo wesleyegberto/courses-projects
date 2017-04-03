@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { StudentsRoutingModule } from './students.routing';
+import { FormStateGuardModule } from '../form-state-guard/form-state-guard.module';
+import { StudentGuardResolver } from './guard/student.guard.resolver';
+import { StudentsRouting } from './students.routing';
 import { StudentService } from './student.service';
 import { StudentsComponent }   from './students.component';
 import { StudentsDetailsComponent } from './students-details/students-details.component';
@@ -14,7 +16,8 @@ import { StudentsFormComponent } from './students-form/students-form.component';
         CommonModule,
         RouterModule,
         FormsModule,
-        StudentsRoutingModule
+        FormStateGuardModule,
+        StudentsRouting
     ],
     exports: [],
     declarations: [
@@ -22,6 +25,6 @@ import { StudentsFormComponent } from './students-form/students-form.component';
         StudentsDetailsComponent,
         StudentsFormComponent
     ],
-    providers: [ StudentService ],
+    providers: [ StudentService, StudentGuardResolver ],
 })
 export class StudentsModule { }
