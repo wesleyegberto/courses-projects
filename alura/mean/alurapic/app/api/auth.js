@@ -24,12 +24,11 @@ module.exports = function (app) {
 					});
 					console.log('Token gerado: ' + token);
 
-					// seta o token no Header Set-Cookie (httpOnly não permitirá o Angular acessar o token)
+					// seta o token no Header Set-Cookie (httpOnly não permitirá o Angular acessar o token), e
+					// para enviar para outros dominios precisamos setar o withCredentials:true nas opções do $http/$resource
 					resp.setHeader('Set-Cookie', cookie.serialize('x-access-token', token, { httpOnly: true }));
 					// seta o token no Header
-					resp
-						.set('x-access-token', token)
-						.end();
+					resp.set('x-access-token', token).end();
 				}
 			}, err => {
 				console.log(err);

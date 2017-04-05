@@ -39,7 +39,7 @@ angular.module('alurapic')
 					 * esses storages podem ser acessars via JS do
 					 * mesmo domain (por isso são vulneráveis as XSS)
 					 */
-					// reseta quando a aba é fechada
+					// reseta quando o navegador é fechado
 					$window.sessionStorage.token = token;
 					// persiste mesmo quando fechamos o browser
 					$window.localStorage.token = token;
