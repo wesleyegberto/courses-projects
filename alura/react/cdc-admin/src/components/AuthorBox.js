@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 import $ from 'jquery';
 
 import AuthorForm from './AuthorForm';
@@ -26,6 +27,10 @@ export default class AuthorBox extends Component {
         // if we weren't using arrow function we'd need to do a bind
         this.setState({ authors: authors });
       }
+    });
+
+    PubSub.subscribe('authors-list-updated', (topic, updatedList) => {
+      this.setState({ authors: updatedList });
     });
   }
 
