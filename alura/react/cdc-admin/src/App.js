@@ -5,6 +5,7 @@ import './css/side-menu.css';
 
 import Home from './components/Home';
 import AuthorBox from './components/AuthorBox';
+import BookBox from './components/BookBox';
 
 export default class App extends Component {
   constructor() {
@@ -41,7 +42,7 @@ export default class App extends Component {
             <div className="content" id="content">
                 <Route exact path="/" component={Home} />
                 <Route path="/authors" component={AuthorBox} />
-                <Route path="/books" component={Home} />
+                <Route path="/books" component={BookBox} />
             </div> {/*end .content*/}
           </div>
         </div>

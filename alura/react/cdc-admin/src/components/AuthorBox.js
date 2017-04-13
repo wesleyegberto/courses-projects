@@ -14,11 +14,11 @@ export default class AuthorBox extends Component {
   }
 
   componentWillMount() {
-    console.log('[AuthorBox] Component is about to mount');
+    console.log('[AuthorBox] component will mount');
   }
 
   componentDidMount() {
-    console.log('[AuthorBox] Component was mounted');
+    console.log('[AuthorBox] component did mount');
     $.ajax({
       url: 'http://localhost:8080/api/autores',
       dataType: 'json',
