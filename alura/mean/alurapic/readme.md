@@ -12,7 +12,7 @@ AluraPic application made using stack MEAN.
 
 
 ## Angular & Express
-A token is gerenated when the user signin.
+A token is generated when the user sign in.
 The API sets the generated token at:
 * Custom header x-access-token
 * Header Set-Header, using httpOnly (the Angular won't access it)
