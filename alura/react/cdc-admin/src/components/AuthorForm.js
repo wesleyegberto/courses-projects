@@ -14,9 +14,6 @@ export default class AuthorForm extends Component {
     this.cleanState();
     // bind context
     this.save = this.save.bind(this);
-    this.setName = this.setName.bind(this);
-    this.setEmail = this.setEmail.bind(this);
-    this.setPassword = this.setPassword.bind(this);
   }
 
   cleanState() {
@@ -64,27 +61,18 @@ export default class AuthorForm extends Component {
     });
   }
 
-  setName(event) {
-    event.preventDefault();
-    this.setState({ name: event.target.value });
-  }
-
-  setEmail(event) {
-    event.preventDefault();
-    this.setState({ email: event.target.value });
-  }
-
-  setPassword(event) {
-    event.preventDefault();
-    this.setState({ password: event.target.value });
+  // the first arg will come from bind in the field
+  updateField(inputName, event) {
+    // resolve the expression in [] and use its result as a field
+    this.setState({ [inputName]: event.target.value });
   }
 
   render() {
     return (
       <form className="pure-form pure-form-aligned" onSubmit={this.save}>
-        <CustomInput type="text" id="nome" name="nome" label="Name" value={this.state.name} onChange={this.setName} />
-        <CustomInput type="email" id="email" name="email" label="E-mail" value={this.state.email} onChange={this.setEmail} />
-        <CustomInput type="password" id="password" name="senha" label="Password" value={this.state.password} onChange={this.setPassword} />
+        <CustomInput type="text" id="nome" name="nome" label="Name" value={this.state.name} onChange={this.updateField.bind(this, 'name')} />
+        <CustomInput type="email" id="email" name="email" label="E-mail" value={this.state.email} onChange={this.updateField.bind(this, 'email')} />
+        <CustomInput type="password" id="senha" name="senha" label="Password" value={this.state.password} onChange={this.updateField.bind(this, 'password')} />
         <Button value="Save" />
       </form>
     );
