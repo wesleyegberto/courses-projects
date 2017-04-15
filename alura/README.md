@@ -10,7 +10,8 @@ Courses and its contents.
 * Angular 2
 
 ## React
-* Components (cdc-admin)
+* Basic Life cycle and Components (cdc-admin)
+* Componentes and Container (instalura)
 
 ## NodeJS
 * Core modules: HTTP and FS
