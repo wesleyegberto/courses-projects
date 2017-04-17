@@ -4,7 +4,7 @@ Project created to React course 2: Componentes and Container.
 
 ## Modules:
 * React core modules: react and react-dom
-* 
+* React-Router 3
 
 
 #### Tool
