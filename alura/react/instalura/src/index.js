@@ -11,7 +11,7 @@ import Login from './Login';
 import Logout from './Logout';
 
 function verificaAutenticacao(nextState, replace) {
-  const resultado = matchPattern('/timeline(/:login)',nextState.location.pathname);
+  const resultado = matchPattern('/timeline(/:login)', nextState.location.pathname);
   const enderecoPrivadoTimeline = resultado.paramValues[0] === undefined;
   if (enderecoPrivadoTimeline && localStorage.getItem('auth-token') === null) {
     replace('/?msg=Você precisa estar logado para acessar o endereço');
