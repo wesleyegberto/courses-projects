@@ -13,6 +13,7 @@ Utilizado algoritmo Multinomial Naive Bytes.
 
 ### Classifica buscas que irão comprar
 * Características: [ Acessou home?, Busca feita, Estava logado? ]
+* Base de comparação: algoritmo burro que sempre retorna Sim (1)
 * Código: classifica_buscas.py
 * Notas:
   * Utiliza o lib pandas para carregar o arquivo e tratar os dados categóricos (busca feita)

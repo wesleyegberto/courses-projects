@@ -1,3 +1,4 @@
+from collections import Counter
 import pandas as pd
 
 # Le o CSV e cria o data frame
@@ -14,6 +15,13 @@ Xdummies_df = pd.get_dummies(X_df).astype(int)
 # Extrai o array de dados e resultados
 X = Xdummies_df.values
 Y = Y_df.values
+
+# Taxa de acerto do algoritmo base (burro)
+# Forma bruta de contagem
+# acertos_um = len(Y[Y==1])
+# acertos_zero = len(Y[Y==0])
+# taxa_acerto_base = 100.0 * max(acertos_um, acertos_zero) / len(Y)
+taxa_acerto_base = 100.0 * max(Counter(Y).itervalues()) / len(Y)
 
 # Utiliza 90% dos dados para treino e 10% para teste
 porcentagem_treino = 0.9
@@ -34,14 +42,14 @@ modelo.fit(treino_dados, treino_marcacoes)
 
 # efetua predicao
 resultado = modelo.predict(teste_dados)
-
-diferencas = resultado - teste_marcacoes
-
-acertos = [d for d in diferencas if d == 0]
-
-total_acertos = len(acertos)
+# Compara se o resultado e igual ao esperado
+diferencas = (resultado == teste_marcacoes)
+# No python True = 1, entao somando temos o total de iguais
+total_acertos = sum(diferencas)
 total_elementos = len(teste_dados)
 
 taxa_acerto = 100.0 * total_acertos / total_elementos
 
-print('%d%% de %d' % (taxa_acerto, total_elementos))
+print('Total elementos: %d' % total_elementos)
+print('Taxa acerto base: %f' % taxa_acerto_base)
+print('Taxa acerto: %f' % taxa_acerto)

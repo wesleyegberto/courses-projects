@@ -39,4 +39,5 @@ total_elementos = len(teste_dados)
 
 taxa_acerto = 100.0 * total_acertos / total_elementos
 
-print('%d%% de %d' % (taxa_acerto, total_elementos))
+print('Total elementos: %d' % total_elementos)
+print('Taxa acerto: %f' % taxa_acerto)
