@@ -1,6 +1,6 @@
 # Curso de Introdução ao Machine Learning
 
-Utilizado algoritmo Multinomial Naive Bytes.
+Utilizado algoritmo Multinomial Naive Bayes.
 
 
 ### Classificação de Animais
@@ -17,6 +17,10 @@ Utilizado algoritmo Multinomial Naive Bytes.
 * Código: classifica_buscas.py
 * Notas:
   * Utiliza o lib pandas para carregar o arquivo e tratar os dados categóricos (busca feita)
+
+### Classifica buscas que irão comprar com dois algoritmos
+* É feito a comparação de dois algoritmos: Neive Bayes e Adapting Boosting
+
 
 ## Libs
 * sklearn: kit com algoritmos de machine learning

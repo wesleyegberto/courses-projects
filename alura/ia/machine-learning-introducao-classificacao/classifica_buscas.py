@@ -16,13 +16,6 @@ Xdummies_df = pd.get_dummies(X_df).astype(int)
 X = Xdummies_df.values
 Y = Y_df.values
 
-# Taxa de acerto do algoritmo base (burro)
-# Forma bruta de contagem
-# acertos_um = len(Y[Y==1])
-# acertos_zero = len(Y[Y==0])
-# taxa_acerto_base = 100.0 * max(acertos_um, acertos_zero) / len(Y)
-taxa_acerto_base = 100.0 * max(Counter(Y).itervalues()) / len(Y)
-
 # Utiliza 90% dos dados para treino e 10% para teste
 porcentagem_treino = 0.9
 tamanho_treino = int(porcentagem_treino * len(Y))
@@ -34,6 +27,13 @@ treino_marcacoes = Y[:tamanho_treino]
 teste_dados = X[-tamanho_teste:]
 teste_marcacoes = Y[-tamanho_teste:]
 
+# Taxa de acerto do algoritmo base (burro)
+# Forma bruta de contagem
+# acertos_um = len(teste_marcacoes[teste_marcacoes==1])
+# acertos_zero = len(teste_marcacoes[teste_marcacoes==0])
+# taxa_acerto_base = 100.0 * max(acertos_um, acertos_zero) / len(teste_marcacoes)
+taxa_acerto_base = 100.0 * max(Counter(teste_marcacoes).itervalues()) / len(teste_marcacoes)
+
 
 # Cria o modelo para treino
 from sklearn.naive_bayes import MultinomialNB
@@ -42,6 +42,7 @@ modelo.fit(treino_dados, treino_marcacoes)
 
 # efetua predicao
 resultado = modelo.predict(teste_dados)
+
 # Compara se o resultado e igual ao esperado
 diferencas = (resultado == teste_marcacoes)
 # No python True = 1, entao somando temos o total de iguais

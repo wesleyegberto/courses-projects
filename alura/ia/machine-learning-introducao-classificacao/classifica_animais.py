@@ -13,7 +13,7 @@ dados = [porco1, porco2, porco3, cachorro1, cachorro2, cachorro3]
 marcacoes = [1, 1, 1, -1, -1, -1]
 
 
-# Utiliza o algoritmo Multinomial Naive Bytes
+# Utiliza o algoritmo Multinomial Naive Bayes
 from sklearn.naive_bayes import MultinomialNB
 
 # Cria o modelo e o treina (adequa)
