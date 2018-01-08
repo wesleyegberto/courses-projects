@@ -6,9 +6,12 @@ var express = require('express')
     ,path =  require('path')
     ,bodyParser = require('body-parser');
 
+/* removido para usar webpack-dev-server
 app.set('clientPath', path.join(__dirname, '../..', 'client'));
 console.log(app.get('clientPath'));
 app.use(express.static(app.get('clientPath')));
+*/
+
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
