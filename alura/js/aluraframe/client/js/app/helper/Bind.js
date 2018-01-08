@@ -1,10 +1,7 @@
 class Bind {
   /**
-   * Cria um Bind entre o model e a view, efetuando atualizando
+   * Cria um Bind entre o model e a view, efetuando atualizacoes
    * quando props é alterado/invocado.
-   * @param {*} model 
-   * @param {*} view 
-   * @param {*} props 
    */
   constructor(model, view, ...props) {
     let proxy = ProxyFactory.create(model, props, model => view.update(model));
