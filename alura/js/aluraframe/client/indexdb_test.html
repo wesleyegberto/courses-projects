@@ -6,33 +6,14 @@
 </head>
 
 <body>
+	<script src="js/app/service/ConnectionFactory.js"></script>
+	<script src="js/app/service/NegociacaoDao.js"></script>
 	<script src="js/app/models/Negociacao.js"></script>
 	<script>
-		var connection;
+		var connection = null;
 
-		// 1 é a versão mínima requerida do banco
-		var openRequest = window.indexedDB.open('aluraframe', 1);
-
-		openRequest.onupgradeneeded = e => {
-			console.log('Criando ou atualizando o banco');
-			var minhaConnection = e.target.result;
-			if (minhaConnection.objectStoreNames.contains('negociacoes')) {
-				minhaConnection.deleteObjectStore('negociacoes');
-			}
-			minhaConnection.createObjectStore('negociacoes', {
-				autoIncrement: true
-			});
-		};
-
-		openRequest.onsuccess = e => {
-			console.log('Conexão realizada com sucesso');
-			// e.target.result é uma instância de IDBDatabase
-			connection = e.target.result;
-		};
-
-		openRequest.onerror = e => {
-			console.log(e.target.error);
-		};
+		ConnectionFactory.getConnection()
+			.then(conn => connection = conn);
 
 		function adiciona() {
 			let transaction = connection.transaction(['negociacoes'], 'readwrite');

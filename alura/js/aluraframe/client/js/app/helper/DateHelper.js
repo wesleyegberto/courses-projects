@@ -9,7 +9,7 @@ class DateHelper {
     }
 
     static textoParaData(texto) {
-        if(!/\d{2}\/\d{2}\/\d{4}/g.test(texto)) {
+        if (!/\d{2}\/\d{2}\/\d{4}/g.test(texto)) {
             throw new Error('Deve estar no formato dd/mm/aaaa');
         }
         // ES6 - spread operator = cada posição do array vira um argumento

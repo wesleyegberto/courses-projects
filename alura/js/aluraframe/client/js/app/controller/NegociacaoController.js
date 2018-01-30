@@ -20,17 +20,38 @@ class NegociacaoController {
     // this._listaNegociacoes = ProxyFactory.create(new ListaNegociacoes(), ['adiciona', 'esvazia'], model => this._negociacoesView.update(model));
     // this._negociacoesView.update(this._listaNegociacoes);
 
-    this._listaNegociacoes = new Bind(new ListaNegociacoes(), new NegociacoesView($('#negociacoesView')),
-                                      'adiciona', 'esvazia', 'ordena', 'inverteOrdem');
+    this._listaNegociacoes = new Bind(new ListaNegociacoes(),
+      new NegociacoesView($('#negociacoesView')),
+      'adiciona', 'esvazia', 'ordena', 'inverteOrdem');
+
+    new NegociacaoService()
+      .lista()
+      .then(negociacoes => negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao)))
+      .catch(erro => this._mensagem.texto = erro);
+
+    // setInterval(() => this.importaNegociacoes(), 3000);
   }
 
   adiciona(event) {
     // cancela o submit
     event.preventDefault();
 
-    this._listaNegociacoes.adiciona(this._criaNegociacao());
+    // removido para adicionar IndexDB primeiro
+    // this._listaNegociacoes.adiciona(this._criaNegociacao());
     // agora usamos o bind do model
     // this._negociacoesView.update(this._listaNegociacoes);
+
+    // TODO: quando dentro do then() a linha abaixa nao captura os valores dos campos
+    let negociacao = this._criaNegociacao();
+    new NegociacaoService()
+      .cadastra(negociacao)
+        .then(mensagem => {
+          this._listaNegociacoes.adiciona(negociacao);
+          this._mensagem.texto = mensagem;
+          this._limpaFormulario();
+        })
+        .catch(erro => this._mensagem.texto = erro);
+
     this._limpaFormulario();
   }
 
@@ -49,28 +70,32 @@ class NegociacaoController {
     this._listaNegociacoes.esvazia();
     // this._negociacoesView.update(this._listaNegociacoes);
 
-    this._mensagem.texto = 'Negociações apagadas com sucesso';
+    // removido para apresentar mensagem do retorno
+    // this._mensagem.texto = 'Negociações apagadas com sucesso';
     // agora usamos bind do model
     // this._mensagemView.update(this._mensagem);
+
+    new NegociacaoService()
+      .apaga()
+      .then(mensagem => {
+        this._mensagem.texto = mensagem;
+        this._listaNegociacoes.esvazia();
+      })
+      .catch(erro => this._mensagem.texto = erro);
   }
 
   _limpaFormulario() {
     this._inputData.value = '';
     this._inputQuantidade.value = 1;
-    this._inputValor.value = 0.0
+    this._inputValor.value = 1.0
     this._inputData.focus();
   }
 
   importaNegociacoes() {
     let service = new NegociacaoService();
-    Promise.all([
-        service.importaNegociacoesSemanaAtual(),
-        service.importaNegociacoesSemanaPassada(),
-        service.importaNegociacoesSemanaRetrasada()
-      ]).then(negociacoes => {
-        negociacoes
-          .reduce((arrayAchatado, array) => arrayAchatado.concat(array), [])
-          .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+    service.importaTodasNegociacoes(this._listaNegociacoes.negociacoes)
+      .then(negociacoes => {
+        negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
         this._mensagem.texto = 'Negociações importadas com sucesso';
       })
       .catch(erro => this._mensagem.texto = erro);

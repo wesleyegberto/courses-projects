@@ -12,7 +12,7 @@ class ProxyFactory {
       get(target, prop, receiver) {
         if (props.includes(prop) && ProxyFactory._ehFuncao(target[prop])) {
           return function () {
-            console.log(`invoking function ${prop}`);
+            console.log(`invoking function: ${prop}`);
             // precisamos fazer return caso o método do target retorne algo
             Reflect.apply(target[prop], target, arguments);
             return acao(target);
