@@ -1,3 +1,12 @@
+import { ListaNegociacoes } from '../model/ListaNegociacoes';
+import { Mensagem } from '../model/Mensagem';
+import { NegociacoesView } from '../view/NegociacoesView';
+import { MensagemView } from '../view/MensagemView';
+import { NegociacaoService } from '../service/NegociacaoService';
+import { DateHelper } from '../helper/DateHelper';
+import { Bind } from '../helper/Bind';
+import { Negociacao } from '../model/Negociacao';
+
 class NegociacaoController {
   constructor() {
     // bind associa o contexto de um objeto na função querySelector
@@ -109,4 +118,9 @@ class NegociacaoController {
     }
     this._ordemAtual = coluna;
   }
+}
+
+let negociacaoController = new NegociacaoController();
+export function instanciaAtual() {
+  return negociacaoController;
 }

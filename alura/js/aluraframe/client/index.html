@@ -28,12 +28,15 @@
     </form>
     
     <div class="text-center">
-        <button class="btn btn-primary text-center" type="button" onclick="negociacaoCtrl.importaNegociacoes()">Importar Negociações</button>
-        <button class="btn btn-primary text-center" type="button" onclick="negociacaoCtrl.apaga()">Apagar</button>
+        <button class="btn btn-primary text-center" type="button" id="btn-import" onclick="negociacaoCtrl.importaNegociacoes()">Importar Negociações</button>
+        <button class="btn btn-primary text-center" type="button" id="btn-delete" onclick="negociacaoCtrl.apaga()">Apagar</button>
     </div> 
     <br/><br/>
     <div id="negociacoesView"></div>
 </body>
+<script src="node_modules/systemjs/dist/system.js"></script>
+
+<!-- Removed to use SystemJS
 <script src="js/app/polyfill/es6.js"></script>
 <script src="js/app/polyfill/fetch.js"></script>
 <script src="js/app/helper/DateHelper.js"></script>
@@ -53,5 +56,10 @@
 <script src="js/app/lib/datex.js"></script>
 <script>
     var negociacaoCtrl = new NegociacaoController();
+</script>
+-->
+<script>
+    System.defaultJSExtensions = true; // omitir extensao .js   
+    System.import('js/app/boot').catch(function(err) { console.error(err); });
 </script>
 </html>

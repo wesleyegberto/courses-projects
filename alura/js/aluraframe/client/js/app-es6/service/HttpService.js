@@ -1,4 +1,4 @@
-class HttpService {
+export class HttpService {
   getUsingXMLHttpReq(url) {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();

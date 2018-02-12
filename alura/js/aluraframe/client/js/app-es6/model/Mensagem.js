@@ -1,4 +1,4 @@
-class Mensagem {
+export class Mensagem {
   constructor(texto) {
     // Edge 13 não suporta params opcionais
     this._texto = texto || '';

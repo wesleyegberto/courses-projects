@@ -1,4 +1,6 @@
-class Bind {
+import { ProxyFactory } from './ProxyFactory';
+
+export class Bind {
   /**
    * Cria um Bind entre o model e a view, efetuando atualizacoes
    * quando props é alterado/invocado.

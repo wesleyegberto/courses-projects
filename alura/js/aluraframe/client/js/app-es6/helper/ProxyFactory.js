@@ -1,4 +1,4 @@
-class ProxyFactory {
+export class ProxyFactory {
   /**
    * Cria um proxy que encapsula o objeto recebido.
    * @param {*} objeto objeto que será encapsulado

@@ -1,4 +1,4 @@
-class DateHelper {
+export class DateHelper {
     constructor() {
         // não faz sentido criar uma instância
         throw new Erro('DateHelper não pode ser instanciada');
