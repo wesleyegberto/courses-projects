@@ -4,27 +4,25 @@ import com.github.wesleyegberto.kafka.simpleconsumer.properties.ProducerProperti
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.KafkaException;
+import org.apache.kafka.common.TopicPartition;
 
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-public class SimpleStringRecordProducer {
+public class AssignConsumer {
     public static void main(String[] args) {
         KafkaConsumer consumer = new KafkaConsumer(ProducerProperties.createRequiredProperties());
 
-        List<String> topics = Arrays.asList("my-topic");
+        List<TopicPartition> partitions = Arrays.asList(new TopicPartition("my-topic", 0));
 
-        consumer.subscribe(topics);
+        consumer.assign(partitions);
 
         try {
             while(true) {
                 ConsumerRecords<String, String> consumerRecords = consumer.poll(Duration.ofMillis(1000));
                 consumerRecords.iterator()
-                        .forEachRemaining(SimpleStringRecordProducer::processRecord);
+                        .forEachRemaining(AssignConsumer::processRecord);
             }
         } catch (Exception ex) {
             System.err.println("Error: " + ex.getMessage());
