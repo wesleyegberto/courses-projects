@@ -1,6 +1,6 @@
 # Curso de Introdução ao Machine Learning
 
-Utilizado algoritmo Multinomial Naive Bayes.
+Utilizado algoritmo Multinomial Naive Bayes e AdaBoost.
 
 
 ### Classificação de Animais

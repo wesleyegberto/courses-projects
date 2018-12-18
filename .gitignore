@@ -6,6 +6,7 @@ bin/
 build/
 *.class
 *.jar
+*.iml
 *.map
 .project
 .classpath
