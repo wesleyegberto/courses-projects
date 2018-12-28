@@ -44,6 +44,7 @@ Course from Adam Bien's workshop
 * Interceptors
 * Exception Mapper
 
+
 ## javaeetesting
 Course from Adam Bien's workshop
 * CDI vs EJB
@@ -58,3 +59,7 @@ Course from Adam Bien's workshop
 * Websocket testing
 * JMeter
 * Exposing closed libs to test
+
+
+## spring-cloud
+* spring-cloud-coordinating-services: Course about Eureka, Ribbon, Hystrix and FeignClient.
