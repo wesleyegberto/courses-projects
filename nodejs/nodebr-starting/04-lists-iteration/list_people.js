@@ -4,6 +4,9 @@ async function main() {
 	try {
 		const searchResult = await service.findPeopleByName('a');
 
+		// destructuring
+		// const { results } = await service.findPeopleByName('a');
+
 		const names = [];
 
 		// average: 0.190ms
