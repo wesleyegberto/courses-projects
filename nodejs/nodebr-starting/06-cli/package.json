@@ -1,0 +1,26 @@
+{
+  "name": "06-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test_report": "mocha --reporter doc > docs/test.html",
+    "test_xunit": "mocha --reporter xunit --reporter-options output=docs/xunit_report.xml",
+    "test_doc": "mocha --reporter doc",
+    "test_min": "mocha --reporter min",
+    "test_json": "mocha --reporter json",
+    "test_json-stream": "mocha --reporter json-stream",
+    "test_dot": "mocha --reporter dot",
+    "test_progress": "mocha --reporter progress",
+    "test_nyan": "mocha --reporter nyan",
+    "test_landing": "mocha --reporter landing",
+    "test_tap": "mocha --reporter tap"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
+}
