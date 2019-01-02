@@ -12,7 +12,7 @@ public class CoursesRecommenderTest {
 
         Recommender recommender = new UserSimilarityRecommenderBuilder().buildRecommender(model);
 
-        List<RecommendedItem> recommendations = recommender.recommend(1, 3);
+        List<RecommendedItem> recommendations = recommender.recommend(2575, 3);
         for (RecommendedItem recommendation : recommendations) {
             System.out.println(recommendation);
         }
