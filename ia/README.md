@@ -5,4 +5,4 @@
 * machine learning - recomendacao: Recommendation using Mahout.
 * machine-learning-introducao-classificacao: Introduction to classification.
 * machine-learning-algoritmos-classificacao: ML classification algorithms.
-
+* machine-learning-sklearn-classificacao: ML using SKLearn.
