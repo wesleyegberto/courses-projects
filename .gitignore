@@ -27,3 +27,5 @@ typings
 *.module.js
 *.service.js
 *.routes.js
+__pycache__/
+*.pyc
