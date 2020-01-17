@@ -1,0 +1,20 @@
+{
+  "name": "github-users-localizer",
+  "version": "1.0.0",
+  "description": "Simple React Native App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wesley Egberto",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
