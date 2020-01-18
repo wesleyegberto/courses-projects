@@ -10,6 +10,7 @@ npm init
 yarn add nodemon
 yarn add express
 yarn add axios
+yarn add cors
 ```
 
 ## Running
