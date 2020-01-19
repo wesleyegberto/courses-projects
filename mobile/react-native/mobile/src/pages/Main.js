@@ -6,6 +6,7 @@ import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location'
 import { MaterialIcons } from '@expo/vector-icons';
 
 import api from '../services/api';
+import { connect, disconnect, subscribeToNewDevs } from '../services/socket';
 
 function Main({ navigation }) {
 	const [currentRegion, setCurrentRegion] = useState(null);
@@ -36,6 +37,10 @@ function Main({ navigation }) {
 		loadInitialPosition();
 	}, []);
 
+	useEffect(() => {
+		subscribeToNewDevs(dev => setDevs([...devs, dev]));
+	}, [devs]);
+
 	// only display the map if we could get the current position
 	if (!currentRegion) {
 		return warningMessage();
@@ -52,6 +57,15 @@ function Main({ navigation }) {
 			}
 		});
 		setDevs(response.data.devs || []);
+		setupWebsocket();
+	}
+
+	function setupWebsocket() {
+		disconnect();
+
+		const { latitude, longitude } = currentRegion;
+
+		connect(latitude, longitude, techs);
 	}
 
 	async function handleRegionChanged(region) {
@@ -78,7 +92,6 @@ function Main({ navigation }) {
 							latitude: dev.location.coordinates[1]
 						}}
 					>
-						<Text style={styles.devName}>Bugzaoo</Text>
 						<Image
 							style={styles.avatar}
 							source={{ uri: dev.avatar_url }}

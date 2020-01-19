@@ -33,6 +33,8 @@
   * Install: `expo install expo-location`
 * *react-native-webview*
   * Webview
+* *socket.io-client*
+  * Websocket client
 
 ## Resources
 

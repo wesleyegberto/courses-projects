@@ -2,6 +2,8 @@ const axios = require('axios');
 const Dev = require('../models/Dev');
 const parseStringAsArray = require('../utils/parseStringAsArray');
 
+const { findConnections, sendMessage } = require('../websocket');
+
 module.exports = {
   getAll: async (request, response) => {
     const devs = await Dev.find();
@@ -30,6 +32,12 @@ module.exports = {
       techs: techsArray,
       location
     });
+
+    // find connected devices to notify the created dev
+    const socketsToNotify = findConnections({ latitude, longitude }, techsArray);
+    if (socketsToNotify && socketsToNotify.length) {
+      sendMessage(socketsToNotify, 'NewDev', dev);
+    }
 
     return response.json(dev);
   }

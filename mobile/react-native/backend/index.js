@@ -1,9 +1,15 @@
 const express = require('express');
+const http = require('http');
 const mongoose = require('mongoose');
 const cors = require('cors');
+
 const routes = require('./routes');
+const { setupWebsocket }  = require('./websocket');
 
 const app = express();
+const server = http.Server(app);
+
+setupWebsocket(server);
 
 // activates JSON to all requests
 app.use(express.json());
@@ -11,7 +17,7 @@ app.use(express.json());
 // app.get(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:3000'
+	origin: 'http://localhost:3000'
 }));
 app.use(routes);
 
@@ -20,4 +26,4 @@ mongoose.connect('mongodb://root:supersecret@localhost?retryWrites=true&w=majori
 	useUnifiedTopology: true
 });
 
-app.listen(3333);
+server.listen(3333);
