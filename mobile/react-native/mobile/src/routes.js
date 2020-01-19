@@ -20,6 +20,7 @@ const Routes = createAppContainer(
 		}
 	}, {
 		defaultNavigationOptions: {
+			headerBackTitleVisible: false, // hide the Back text
 			headerStyle: {
 				backgroundColor: '#7d40e7'
 			},

@@ -31,6 +31,8 @@
 * *expo-location*
   * Lib to work with GPS location
   * Install: `expo install expo-location`
+* *react-native-webview*
+  * Webview
 
 ## Resources
 
