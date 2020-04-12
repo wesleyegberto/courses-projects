@@ -17,3 +17,5 @@
 * angular2: Course from Loiane.
 * angular2-crud-auth-routing: Course from Loaiane to show Auth and Routing.
 * PSAngularUnitTestingCourse: Course from Pluralsight about Testing.
+* Angular-JumpStart: Course from Dan Whanlin at Pluralsight.
+* angular-architecture: Course from Dan Whanlin at Pluralsight.
