@@ -9,24 +9,37 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
+      require('karma-sabarivka-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    coverageReporter: {
+      include: [
+          // Specify include pattern(s) first
+          'src/**/*.(ts|js)',
+          // Then specify "do not include" patterns (note `!` sign on the beginning of each statement)
+          '!src/main.(ts|js)',
+          '!src/**/*.spec.(ts|js)',
+          '!src/**/*.conf.(ts|js)',
+          '!src/**/*.module.(ts|js)',
+          '!src/**/environment*.(ts|js)'
+      ]
+    },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../coverage'),
-      reports: ['html', 'lcovonly'],
+      reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true,
       thresholds: {
-        statements: 80,
-        lines: 80,
-        branches: 30,
-        functions: 50
+        statements: 50,
+        lines: 50,
+        branches: 5,
+        functions: 30
       }
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'sabarivka', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
