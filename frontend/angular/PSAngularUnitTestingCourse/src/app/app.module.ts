@@ -18,6 +18,7 @@ import { MessageService }       from './message.service';
 import { MessagesComponent }    from './messages/messages.component';
 import { StrengthPipe } from './strength/strength.pipe';
 import { HeroComponent } from './hero/hero.component';
+import { CalculationService } from './calculation.service';
 
 @NgModule({
   imports: [
@@ -43,7 +44,7 @@ import { HeroComponent } from './hero/hero.component';
     StrengthPipe,
     HeroComponent
   ],
-  providers: [ HeroService, MessageService ],
+  providers: [ HeroService, MessageService, CalculationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

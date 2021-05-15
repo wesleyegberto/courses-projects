@@ -14,17 +14,24 @@ const httpOptions = {
 @Injectable()
 export class HeroService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = '/api/heroes';  // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
   /** GET heroes from the server */
-  getHeroes (): Observable<Hero[]> {
+  getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(heroes => this.log(`fetched heroes`)),
+        tap(heroes => {
+          this.log(`fetched heroes`);
+          if (heroes && heroes.length) {
+            heroes.forEach(hero => {
+              hero.name = `Super ${hero.name}`;
+            });
+          }
+        }),
         catchError(this.handleError('getHeroes', []))
       );
   }
