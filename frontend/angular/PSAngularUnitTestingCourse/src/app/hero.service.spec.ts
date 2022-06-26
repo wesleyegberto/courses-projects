@@ -66,20 +66,20 @@ describe('HeroService', () => {
 
   describe('addHero', () => {
     it('should save a hero', () => {
-      heroSvc.addHero({ name: 'Neo', strength: 42 } as Hero)
+      heroSvc.addHero({ name: 'Mr. Anderson', strength: 42 } as Hero)
         .subscribe(hero => {
           expect(hero).toBeTruthy();
           expect(hero.id).toBeGreaterThan(0);
-          expect(hero.name).toBe('Adam');
+          expect(hero.name).toBe('Neo');
           expect(hero.strength).toBe(42);
         });
 
       const req = httpTestingController.expectOne('/api/heroes');
       // verify the request body to assert if everything we passed was sent correctly
-      expect(req.request.body.name).toBe('Neo');
+      expect(req.request.body.name).toBe('Mr. Anderson');
       expect(req.request.body.strength).toBe(42);
 
-      req.flush({ id: 42, name: 'Adam', strength: 42 });
+      req.flush({ id: 1, name: 'Neo', strength: 42 });
       httpTestingController.verify();
     });
   });

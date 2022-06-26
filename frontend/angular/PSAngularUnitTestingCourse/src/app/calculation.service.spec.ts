@@ -1,4 +1,3 @@
-import { MessageService } from './message.service';
 import { CalculationService } from './calculation.service';
 
 describe('CalculationService', () => {
@@ -19,6 +18,12 @@ describe('CalculationService', () => {
 
       expect(mockMessageService.add).toHaveBeenCalledTimes(1);
       expect(mockMessageService.add).toHaveBeenCalledWith('Calculation result: 42');
+    });
+
+    it('should throw error if result was not added', () => {
+      mockMessageService.add.and.returnValue(false);
+
+      expect(() => service.calculate()).toThrow(new Error("Result was not added"));
     });
   });
 });

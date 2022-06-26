@@ -6,7 +6,10 @@ export class CalculationService {
   constructor(private readonly messageService: MessageService) {}
 
   calculate(): number {
-    this.messageService.add('Calculation result: 42');
+    const result = this.messageService.add('Calculation result: 42');
+    if (!result) {
+      throw new Error('Result was not added');
+    }
     return 42;
   }
 }
